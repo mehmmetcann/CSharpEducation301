@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharpEgitimKampi301.EntityLayer.Concrete
 {
-    internal class Order
+    public class Order
     {
         public int OrderId { get; set; }
 
