@@ -16,5 +16,93 @@ namespace CSharpEgitimKampi301.EFProject
         {
             InitializeComponent();
         }
+
+        EgitimKampiEfTravelDbEntities db = new EgitimKampiEfTravelDbEntities();
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            var removeValue = db.Guide.Find(id);
+            db.Guide.Remove(removeValue);
+            db.SaveChanges();
+            MessageBox.Show("Rehber Başarıyla Silindi");
+        }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            var valeues = db.Guide.ToList();
+            dataGridView1.DataSource = valeues;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Guide guide = new Guide();
+            guide.GuideName = txtName.Text;
+            guide.GuideSurname = txtSurname.Text;
+            db.Guide.Add(guide);
+            db.SaveChanges();
+            MessageBox.Show("Rehber Başarıyla Eklendi");
+        }
+
+        private void txtSurname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGetByID_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            var values = db.Guide.Where(x => x.GuideId == id).ToList();
+            dataGridView1.DataSource = values;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            var updateValue = db.Guide.Find(id);
+            updateValue.GuideName = txtName.Text;
+            updateValue.GuideSurname = txtSurname.Text;
+            db.SaveChanges();
+            MessageBox.Show("Rehber Başarıyla Güncellendi","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
